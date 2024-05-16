@@ -1,10 +1,5 @@
 export const corsOptions = {
   origin: true,
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-  },
-  optionSuccessStatus: 200,
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
