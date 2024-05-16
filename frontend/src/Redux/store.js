@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import authSlice from "./reducers/auth";
+
 import api from "./api/api";
 import authSlice from "./reducers/auth";
 import miscSlice from "./reducers/misc";
 import chatSlice from "./reducers/chat";
-// import miscSlice from "./reducers/misc";
-// import chatSlice from "./reducers/chat";
+
 
 const store = configureStore({
   reducer: {
