@@ -46,16 +46,6 @@ const io = new Server(server, {
   cors: corsOptions,
 });
 
-app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://chatgram-1v1udvpsa-vinitparmar03s-projects.vercel.app"
-  );
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
-
 app.set("io", io);
 
 app.use(express.json());
