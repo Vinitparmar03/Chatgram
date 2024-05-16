@@ -11,6 +11,7 @@ import axios from "axios";
 import { server } from "./Constants/config";
 import { userExists, userNotExists } from "./Redux/reducers/auth";
 import { LayoutLoader } from "./Components/Layout/Loaders";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   const { user, loader } = useSelector((state) => state.auth);
@@ -23,7 +24,7 @@ function App() {
       .then(({ data }) => dispatch(userExists(data.user)))
       .catch((err) => dispatch(userNotExists()));
   }, [dispatch]);
-  
+
   return loader ? (
     <LayoutLoader />
   ) : (
@@ -48,6 +49,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/chat/:chatId" element={<Chat />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
