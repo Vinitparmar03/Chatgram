@@ -86,7 +86,6 @@ const Chat = ({ chatId, user }) => {
   };
 
   useEffect(() => {
-    console.log("Chat", chatId);
     socket.emit(CHAT_JOINED, { userId: user._id, members });
     dispatch(removeNewMessagesAlert(chatId));
 

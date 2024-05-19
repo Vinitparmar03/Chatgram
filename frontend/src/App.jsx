@@ -3,7 +3,7 @@ import "./App.css";
 import ProtectRoute from "./Auth/ProtectRoute";
 import { SocketProvider } from "./socket";
 import { useDispatch, useSelector } from "react-redux";
-import { lazy, useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import axios from "axios";
 import { server } from "./Constants/config";
 import { userExists, userNotExists } from "./Redux/reducers/auth";
@@ -11,9 +11,9 @@ import { LayoutLoader } from "./Components/Layout/Loaders";
 import { Toaster } from "react-hot-toast";
 
 const Home = lazy(() => import("./Pages/Home"));
-const Login = lazy(() => import("./Pages/LoginSignup"));
+const LoginSignup = lazy(() => import("./Pages/LoginSignup"));
 const Chat = lazy(() => import("./Pages/Chat"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+const NotFound = lazy(() => import("./Pages/NotFound"));
 
 function App() {
   const { user, loader } = useSelector((state) => state.auth);
