@@ -1,17 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ProtectRoute from "./Auth/ProtectRoute";
-import Home from "./Pages/Home";
-import LoginSignup from "./Pages/LoginSignup";
-import Chat from "./Pages/Chat";
 import { SocketProvider } from "./socket";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import axios from "axios";
 import { server } from "./Constants/config";
 import { userExists, userNotExists } from "./Redux/reducers/auth";
 import { LayoutLoader } from "./Components/Layout/Loaders";
-import NotFound from "./Pages/NotFound";
+import { Toaster } from "react-hot-toast";
+
+const Home = lazy(() => import("./Pages/Home"));
+const Login = lazy(() => import("./Pages/LoginSignup"));
+const Chat = lazy(() => import("./Pages/Chat"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
   const { user, loader } = useSelector((state) => state.auth);
@@ -29,28 +31,32 @@ function App() {
     <LayoutLoader />
   ) : (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/login"
-          element={
-            <ProtectRoute user={!user} redirect="/">
-              <LoginSignup />
-            </ProtectRoute>
-          }
-        />
+      <Suspense fallback={<LayoutLoader />}>
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              <ProtectRoute user={!user} redirect="/">
+                <LoginSignup />
+              </ProtectRoute>
+            }
+          />
 
-        <Route
-          element={
-            <SocketProvider>
-              <ProtectRoute user={user} />
-            </SocketProvider>
-          }
-        >
-          <Route path="/" element={<Home />} />
-          <Route path="/chat/:chatId" element={<Chat />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route
+            element={
+              <SocketProvider>
+                <ProtectRoute user={user} />
+              </SocketProvider>
+            }
+          >
+            <Route path="/" element={<Home />} />
+            <Route path="/chat/:chatId" element={<Chat />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+
+      <Toaster position="bottom-center" />
     </BrowserRouter>
   );
 }
