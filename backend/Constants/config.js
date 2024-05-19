@@ -5,7 +5,7 @@ export const corsOptions = {
     "http://localhost:5174",
     "https://chatgram-drab.vercel.app",
     "https://chatgram-git-master-vinitparmar03s-projects.vercel.app",
-    "https://chatgram-ojpwije7m-vinitparmar03s-projects.vercel.app",
+    "https://chatgram-kj076rfyg-vinitparmar03s-projects.vercel.app/",
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
