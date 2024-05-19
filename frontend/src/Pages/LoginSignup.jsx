@@ -313,7 +313,7 @@ const LoginSignup = () => {
                   fullWidth
                   disabled={isLoading}
                 >
-                  Login
+                  Sign up
                 </Button>
 
                 <Typography textAlign={"center"} m={"1rem"}>

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import { AttachFile, Send } from "@mui/icons-material";
-import { InputBox } from "../../Styled Component/StyledComponet";
 import { IconButton, Stack } from "@mui/material";
-import { orange } from "@mui/material/colors";
+import React from "react";
 import { blueColor, darkBlueColor } from "../../Constants/color";
+import { InputBox } from "../../Styled Component/StyledComponet";
 import FileMenu from "../Dialogs/FileMenu";
 
 const ChatFooter = ({
@@ -12,7 +11,7 @@ const ChatFooter = ({
   fileMenuAnchor,
   chatId,
   messageOnChange,
-  handleFileOpen
+  handleFileOpen,
 }) => {
   return (
     <>

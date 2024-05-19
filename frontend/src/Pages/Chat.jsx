@@ -32,7 +32,6 @@ const Chat = ({ chatId, user }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const containerRef = useRef(null);
   const bottomRef = useRef(null);
 
   const [message, setMessage] = useState("");
